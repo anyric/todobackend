@@ -2,7 +2,7 @@ FROM anyric/todobackend-base:latest
 MAINTAINER Anyama Richard
 
 # Install dev/build dependencies
-RUN apt-get install -qy python-dev libmysqlclient-dev
+RUN apt-get install -qy python3-dev default-libmysqlclient-dev
 
 # Activate virtualenv and install wheel support
 RUN . /appenv/bin/activate && \
@@ -11,8 +11,11 @@ RUN . /appenv/bin/activate && \
 # Pip environment variables after wheel installation
 ENV WHEELHOUSE=/wheelhouse PIP_WHEEL_DIR=/wheelhouse PIP_FIND_LINKS=/wheelhouse XDG_CACHE_HMOE=/cache
 
-# Output build artifacts
+# Output: build artifacts
 VOLUME /wheelhouse
+
+# Output: build cache
+VOLUME /build
 
 VOLUME /reports
 
