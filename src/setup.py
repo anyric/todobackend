@@ -10,7 +10,8 @@ setup(
   install_requires       = ["Django>=1.9",
                             "django-cors-headers>=1.1.0",
                             "djangorestframework>=3.3.0",
-                            "mysqlclient>=1.3.4"],
+                            "mysqlclient>=1.3.4",
+                            "uwsgi>=2.0"],
   extras_require         = {
                             "test": [
                               "colorama>=0.3.9",
