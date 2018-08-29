@@ -2,6 +2,8 @@
 venv
 *.pyc
 *.sqlite3
-.coverage
-coverage.xml
-unittests.xml
+src/.coverage
+src/*.xml
+src/*egg-info
+target
+reports
