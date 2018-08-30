@@ -3,6 +3,7 @@
 set -ex
 set -o pipefail
 
+ls /home/circleci/todobackend
 create_service_account() {
   touch /home/circleci/todobackend/ssl/account.json
   echo ${SERVICE_ACCOUNT} > /home/circleci/todobackend/ssl/account.json

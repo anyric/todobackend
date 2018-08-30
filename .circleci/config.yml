@@ -68,7 +68,7 @@ jobs:
       - attach_workspace:
           at: ~/todobackend/workspace
       - deploy:
-          name: Deploy service
+          name: Deploy application
           command: bash .circleci/deploy.sh
 
 workflows:
