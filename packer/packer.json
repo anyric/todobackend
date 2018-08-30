@@ -1,0 +1,38 @@
+{
+	"variables": {
+		"service_account_json": "../ssl/account.json",
+		"project_id": "{{env `PROJECT_ID`}}"
+	},
+	"builders": [
+		{
+			"type": "googlecompute",
+			"project_id": "{{user `project_id`}}",
+			"machine_type": "n1-standard-1",
+			"source_image": "ubuntu-1604-xenial-v20170815a",
+			"region": "europe-west1",
+			"zone": "europe-west1-b",
+			"ssh_username": "todo",
+			"image_description": "final image for todobackend",
+			"image_family": "ubuntu-1604-lts",
+			"image_name": "activo-api-base-image",
+			"disk_size": 10,
+			"account_file": "{{ user `service_account_json`}}"
+		}
+	],
+	"provisioners": [
+    {
+			"type": "file",
+			"source": "{{user `home_path`}}",
+      		      	"destination": "/home/todo/todobackend"
+		},
+		{
+			"type": "shell",
+			"script": "setup.sh"
+    },
+    {
+			"type": "file",
+			"source": "start_app.sh",
+      		"destination": "/home/todo/start_app.sh"
+		}
+	]
+}

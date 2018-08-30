@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  run_test:
     docker:
     - image: circleci/cci-demo-docker-primary:0.0.2
     working_directory: ~/todobackend
@@ -38,4 +38,42 @@ jobs:
       - run:
           name: Releasing application 
           command: make release
+  
 
+  build_image:
+      docker:
+      - image: ubuntu:16.04
+      steps:
+        - checkout
+        - run:
+            name: build final image
+            command: bash .circleci/build.sh
+                  
+        - persist_to_workspace:
+            root: workspace
+            paths:
+              - output
+  
+  deploy_app:
+    docker:
+    - image: ubuntu:16.04
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/todobackend/workspace
+      - deploy:
+          name: Deploy service
+          command: bash .circleci/deploy.sh
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - run_test
+      
+      - build_image
+      - deploy_app:
+          requires:
+            - run_test
+            - build_image
+      

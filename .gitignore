@@ -1,4 +1,4 @@
-.vscode
+.vscode/
 venv
 *.pyc
 *.sqlite3
@@ -7,3 +7,4 @@ src/*.xml
 src/*egg-info
 target
 reports
+account.json
