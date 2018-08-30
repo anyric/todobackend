@@ -43,6 +43,9 @@ jobs:
   build_image:
       docker:
       - image: ubuntu:16.04
+      working_directory: ~/todobackend
+      attach_workspace:
+      at: tmp/  
       steps:
         - checkout
         - run:
@@ -57,6 +60,9 @@ jobs:
   deploy_app:
     docker:
     - image: ubuntu:16.04
+    working_directory: ~/todobackend
+    attach_workspace:
+    at: tmp/  
     steps:
       - checkout
       - attach_workspace:
@@ -70,7 +76,7 @@ workflows:
   build_and_test:
     jobs:
       - run_test
-      
+
       - build_image
       - deploy_app:
           requires:
