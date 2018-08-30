@@ -4,6 +4,9 @@ set -ex
 set -o pipefail
 
 create_service_account() {
+  mkdir -p /home/circleci/todobackend
+  git clone -b master ${INFRASTRUCTURE_REPO} /home/circleci/todobackend
+  touch /home/circleci/todobackend/ssl/account.json
   echo ${SERVICE_ACCOUNT} > /home/circleci/todobackend/ssl/account.json
 }
 
