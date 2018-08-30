@@ -1,4 +1,4 @@
-FROM anyric/todobackend-base:latest
+FROM anyric/todobackend-docker-image:latest
 MAINTAINER Anyama Richard
 
 # Copy application artifacts
