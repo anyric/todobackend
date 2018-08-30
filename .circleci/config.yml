@@ -69,7 +69,7 @@ workflows:
 
       - build_artifacts:
           requires:
-            - test
+            - run_test
       - release_app:
           requires:
-            - build
+            - build_artifacts
