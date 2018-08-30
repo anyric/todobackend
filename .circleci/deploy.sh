@@ -4,14 +4,14 @@ set -ex
 set -o pipefail
 
 create_service_account() {
-  touch /home/circleci/todobackend/account.json
-  echo ${SERVICE_ACCOUNT} > /home/circleci/todobackend/account.json
+  touch /home/circleci/todobackend/ssl/account.json
+  echo ${SERVICE_ACCOUNT} > /home/circleci/todobackend/ssl/account.json
 }
 
 setup_ssl_files() {
   if gcloud auth activate-service-account --key-file=/home/circleci/todobackend/ssl/account.json; then
     gsutil cp gs://${GCLOUD_TODO_BUCKET}/ssl/andela_certificate.crt /home/circleci/todobackend/ssl/andela_certificate.crt
-    gsutil cp gs://${GCLOUD_TODO_BUCKET}/ssl/andela_key.key /home/circleci/todobackend/andela_key.key
+    gsutil cp gs://${GCLOUD_TODO_BUCKET}/ssl/andela_key.key /home/circleci/todobackend/ssl/andela_key.key
   fi
 }
 

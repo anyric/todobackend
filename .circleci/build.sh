@@ -4,8 +4,8 @@ set -ex
 set -o pipefail
 
 create_service_account() {
-  touch /home/circleci/todobackend/account.json
-  echo ${SERVICE_ACCOUNT} > /home/circleci/todobackend/account.json
+  touch /home/circleci/todobackend/ssl/account.json
+  echo ${SERVICE_ACCOUNT} > /home/circleci/todobackend/ssl/account.json
 }
 
 build_packer_image() {

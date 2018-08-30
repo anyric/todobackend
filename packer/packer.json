@@ -20,19 +20,9 @@
 		}
 	],
 	"provisioners": [
-    {
-			"type": "file",
-			"source": "{{user `home_path`}}",
-      		      	"destination": "/home/todo/todobackend"
-		},
 		{
 			"type": "shell",
 			"script": "setup.sh"
-    },
-    {
-			"type": "file",
-			"source": "start_app.sh",
-      		"destination": "/home/todo/start_app.sh"
-		}
+    }
 	]
 }
