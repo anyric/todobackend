@@ -36,8 +36,7 @@ build_infrastructure() {
 
   pushd /home/circleci/todobackend/terraform
     touch terraform_output.log
-    terraform plan
-    terraform apply -auto-approve --parallelism=1 -var="todo_state_path=${TF_VAR_state_path}" -var="todo_project_id=${TF_VAR_project}" -var="todo_bucket=${TF_VAR_bucket}" -var="todo_disk_image=${PACKER_TAG}" \
+    terraform apply -auto-approve -refresh=true --parallelism=1 -var="todo_state_path=${TF_VAR_state_path}" -var="todo_project_id=${TF_VAR_project}" -var="todo_bucket=${TF_VAR_bucket}" -var="todo_disk_image=${PACKER_TAG}" \
     2>&1 | tee terraform_output.log
     
   popd
