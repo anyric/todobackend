@@ -21,10 +21,8 @@ install_docker() {
   sudo chmod +x /usr/local/bin/docker-compose
 
   sudo usermod -aG docker $USER
-  sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-  sudo chmod g+rwx "/home/$USER/.docker" -R
   sudo systemctl enable docker
-  sudo systemctl start docker
+  sudo systemctl restart docker
 }
 
 setup_application() {
