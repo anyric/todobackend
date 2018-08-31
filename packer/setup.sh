@@ -19,8 +19,7 @@ install_docker() {
 }
 
 setup_application() {
-  mkdir -p /home/todo/todobackend
-  git clone -b master ${INFRASTRUCTURE_REPO} /home/todo/todobackend
+  git clone -b master https://github.com/anyric/todobackend.git
   cd /home/todo/todobackend
   make test
   make build
