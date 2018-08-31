@@ -14,7 +14,7 @@
 			"ssh_username": "todo",
 			"image_description": "final image for todobackend",
 			"image_family": "ubuntu-1604-lts",
-			"image_name": "activo-api-base-image",
+			"image_name": "todo-base-image",
 			"disk_size": 10,
 			"account_file": "{{ user `service_account_json`}}"
 		}
