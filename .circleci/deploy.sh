@@ -3,6 +3,8 @@
 set -ex
 set -o pipefail
 
+export PACKER_TAG=$(cat ~/todobackend/workspace/output)
+
 create_service_account() {
   mkdir -p /home/circleci/todobackend
   git clone -b master ${INFRASTRUCTURE_REPO} /home/circleci/todobackend
@@ -24,7 +26,7 @@ initialise_terraform() {
     export TF_VAR_state_path="terraform/state/terraform.tfstate"
     export TF_VAR_project=${GCLOUD_TODO_PROJECT}
     export TF_VAR_bucket=${GCLOUD_TODO_BUCKET}
-
+  
     terraform init -backend-config="path=${TF_VAR_state_path}" -backend-config="project=${TF_VAR_project}" -backend-config="bucket=${TF_VAR_bucket}" -var="todo_disk_image=${PACKER_TAG}"
   popd
 }

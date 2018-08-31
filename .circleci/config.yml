@@ -61,14 +61,6 @@ jobs:
               unzip -d /usr/local/bin packer_0.12.2_linux_amd64.zip
 
         - run:
-            name: install terraform
-            command: |
-              apt-get install -y unzip
-              apt install -y wget
-              wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
-              unzip -d /usr/local/bin terraform_0.11.8_linux_amd64.zip
-
-        - run:
             name: build final image
             command: bash .circleci/build.sh
                   
@@ -88,6 +80,15 @@ jobs:
       - run:
           name: install git
           command: apt-get update -y && apt-get install -y git
+      
+      - run:
+          name: install terraform
+          command: |
+            apt-get install -y unzip
+            apt install -y wget
+            wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
+            unzip -d /usr/local/bin terraform_0.11.8_linux_amd64.zip
+
       - attach_workspace:
           at: ~/todobackend/workspace
       - deploy:
