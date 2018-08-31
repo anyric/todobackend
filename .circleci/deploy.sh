@@ -21,7 +21,7 @@ setup_ssl_files() {
 initialise_terraform() {
   echo "Initializing terraform"
 
-  pushd /home/circleci/todobackend/terraform
+  pushd /home/circleci/todobackend/infrastructure
     export TF_VAR_state_path="terraform/state/terraform.tfstate"
     export TF_VAR_project=${GCLOUD_TODO_PROJECT}
     export TF_VAR_bucket=${GCLOUD_TODO_BUCKET}
@@ -33,7 +33,7 @@ initialise_terraform() {
 build_infrastructure() {
   echo "Building todobackend infrastructure and deploying todobackend application"
 
-  pushd /home/circleci/todobackend/terraform
+  pushd /home/circleci/todobackend/infrastructure
     touch terraform_output.log
     terraform apply --parallelism=1 -var="todo_state_path=${TF_VAR_state_path}" -var="todo_project_id=${TF_VAR_project}" -var="todo_bucket=${TF_VAR_bucket}" -var="todo_disk_image=${PACKER_TAG}" \
     2>&1 | tee terraform_output.log
