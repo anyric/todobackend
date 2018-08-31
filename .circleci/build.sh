@@ -13,7 +13,7 @@ create_service_account() {
 build_packer_image() {
   echo "Rebuilding the packer image"
 
-  pushd  /home/circleci/todobackend/packer-image
+  pushd  /home/circleci/todobackend/packer
     touch packer_output.log
     HOME_PATH=" /home/circleci/todobackend/" PROJECT_ID="$GCLOUD_TODO_PROJECT" packer build packer.json 2>&1 | tee packer_output.log
     PACKER_TAG="$(grep 'A disk image was created:' packer_output.log | cut -d' ' -f8)"
