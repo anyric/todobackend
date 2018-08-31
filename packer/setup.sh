@@ -30,9 +30,9 @@ install_docker() {
 setup_application() {
   git clone -b master https://github.com/anyric/todobackend.git
   cd /home/todo/todobackend
-  make test
-  make build
-  make release
+  sudo make test
+  sudo make build
+  sudo make release
 }
 main() {
   create_activo_user
