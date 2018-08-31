@@ -19,8 +19,9 @@ install_docker() {
 }
 
 setup_application() {
-  echo "This is were I am"
-  pwd
+  mkdir -p /home/todo/todobackend
+  git clone -b master ${INFRASTRUCTURE_REPO} /home/todo/todobackend
+  cd /home/todo/todobackend
   make test
   make build
   make release
