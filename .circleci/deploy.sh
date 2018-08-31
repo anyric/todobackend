@@ -3,7 +3,6 @@
 set -ex
 set -o pipefail
 
-ls /home/circleci/todobackend
 create_service_account() {
   mkdir -p /home/circleci/todobackend
   git clone -b master ${INFRASTRUCTURE_REPO} /home/circleci/todobackend
