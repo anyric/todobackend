@@ -49,6 +49,9 @@ jobs:
       steps:
         - checkout
         - run:
+            name: install git
+            command: sudo apt-get update -y && sudo apt-get install -y git
+        - run:
             name: build final image
             command: bash .circleci/build.sh
                   
@@ -65,6 +68,9 @@ jobs:
     at: tmp/  
     steps:
       - checkout
+      - run:
+          name: install git
+          command: sudo apt-get update -y && sudo apt-get install -y git
       - attach_workspace:
           at: ~/todobackend/workspace
       - deploy:
