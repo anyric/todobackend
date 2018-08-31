@@ -2,7 +2,6 @@ resource "google_compute_instance" "default" {
   name         = "anyric-lms-output"
   machine_type = "n1-standard-1"
   zone         = "europe-west1-b"
-
   tags = ["todobackend", "api"]
 
   boot_disk {
@@ -11,23 +10,19 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  // Local SSD disk
-  scratch_disk {
-  }
+  scratch_disk {}
 
   network_interface {
     network = "default"
 
-    access_config {
-      # nat_ip = "${google_compute_address.web.address}"
-    }
+    access_config {}
   }
 
   metadata {
     todobackend = "api"
   }
 
-  metadata_startup_script = "echo hi > /test.txt"
+  metadata_startup_script = "/home/todo/todobackend/start_app.sh"
 
   lifecycle {
     create_before_destroy = true
