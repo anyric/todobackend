@@ -24,7 +24,7 @@ install_docker() {
 setup_application() {
   git clone -b master https://github.com/anyric/todobackend.git
   cd /home/todo/todobackend
-  export DOCKER_HOST=127.0.0.1
+  export DOCKER_HOST="tcp://127.0.0.1:2376"
   sudo systemctl restart docker
   make test
   make build
