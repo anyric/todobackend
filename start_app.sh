@@ -15,3 +15,10 @@ start_app() {
   sudo make build
   sudo make release
 }
+
+main(){
+  configure_nginx
+  start_app
+}
+
+main "$@"
