@@ -21,6 +21,7 @@ install_docker() {
   sudo chmod +x /usr/local/bin/docker-compose
 
   sudo usermod -aG docker $USER
+  export DOCKER_HOST="unix:///var/run/docker.sock"
   sudo systemctl enable docker
   sudo systemctl restart docker
 }
