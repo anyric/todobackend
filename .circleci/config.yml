@@ -51,11 +51,12 @@ jobs:
         - run:
             name: install git
             command: apt-get update -y && apt-get install -y git
-            
+
         - run:
             name: install packer
             command: |
               apt-get install unzip
+              apt install wget
               wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
               unzip packer_0.12.0_linux_amd64.zip -d packer
               mv packer /usr/local/
@@ -66,6 +67,7 @@ jobs:
             name: install terraform
             command: |
               apt-get install unzip
+              apt install wget
               wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
               unzip terraform_0.11.8_linux_amd64.zip
               mv terraform /usr/local/bin/
