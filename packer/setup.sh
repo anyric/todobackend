@@ -22,15 +22,14 @@ install_docker() {
 
   sudo usermod -aG docker ${USER}
   export DOCKER_HOST="unix:///var/run/docker.sock"
+  sudo chmod 777 /var/run/docker.sock
   sudo systemctl enable docker
   sudo systemctl restart docker
-  sudo systemctl status docker
 }
 
 setup_application() {
   git clone -b master https://github.com/anyric/todobackend.git
   cd /home/todo/todobackend
-  docker info
   make test
   make build
   make release
