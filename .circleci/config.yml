@@ -55,10 +55,10 @@ jobs:
         - run:
             name: install packer
             command: |
-              apt-get install unzip
-              apt install wget
-              wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
-              unzip packer_0.12.0_linux_amd64.zip -d packer
+              apt-get install -y unzip
+              apt install -y wget
+              wget -o https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
+              unzip -o packer_0.12.0_linux_amd64.zip -d packer
               mv packer /usr/local/
               echo 'export PATH="$PATH:/usr/local/packer"' >> /etc/environment
               source /etc/environment
@@ -66,10 +66,10 @@ jobs:
         - run:
             name: install terraform
             command: |
-              apt-get install unzip
-              apt install wget
-              wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
-              unzip terraform_0.11.8_linux_amd64.zip
+              apt-get install -y unzip
+              apt install -y wget
+              wget -o https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
+              unzip -o terraform_0.11.8_linux_amd64.zip
               mv terraform /usr/local/bin/
               echo 'export PATH="$PATH:/usr/local/bin/terraform"' >> /etc/environment
               source /etc/environment
