@@ -12,22 +12,18 @@ RUN . /appenv/bin/activate && \
 ENV WHEELHOUSE=/wheelhouse PIP_WHEEL_DIR=/wheelhouse PIP_FIND_LINKS=/wheelhouse XDG_CACHE_HMOE=/cache
 
 # Output: build artifacts
-VOLUME /wheelhouse
-
-# Output: build cache
-VOLUME /build
-
-VOLUME /reports
+VOLUME ["/wheelhouse", "/build", "/reports"]
 
 # Add test environment variables
 COPY scripts/test.sh /usr/local/bin/test.sh
 RUN chmod +x /usr/local/bin/test.sh
 
+# Copy application source to image
+COPY src/ /application
+WORKDIR /application
+
 # Set default entrypoint scripts
 ENTRYPOINT ["test.sh"]
 CMD ["python", "manage.py", "test", "--noinput"]
 
-# Copy application source to image
-COPY src/ /application
-WORKDIR /application
 
