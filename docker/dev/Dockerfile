@@ -2,7 +2,7 @@ FROM anyric/todobackend-docker-image:latest
 MAINTAINER Anyama Richard
 
 # Install dev/build dependencies
-RUN apt-get install -qy python3-dev default-libmysqlclient-dev
+RUN apt-get update && apt-get install -qy python3-dev default-libmysqlclient-dev
 
 # Activate virtualenv and install wheel support
 RUN . /appenv/bin/activate && \
